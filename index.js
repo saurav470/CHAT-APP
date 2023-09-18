@@ -22,21 +22,6 @@ app.use(express.static(path.resolve(__dirname, "build")))
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/message", messageRoutes);
-
-// --------------------------deployment------------------------------
-
-const __dirname1 = path.resolve();
-
-app.get("/", (req, res) => {
-  return res.sendFile(path.resolve(__dirname1, "build", "index.html"))
-});
-
-// --------------------------deployment------------------------------
-
-// Error Handling middlewares
-app.use(notFound);
-app.use(errorHandler);
-
 const PORT = process.env.PORT;
 console.log(PORT);
 const server = app.listen(
@@ -83,3 +68,18 @@ io.on("connection", (socket) => {
     socket.leave(userData._id);
   });
 });
+
+// --------------------------deployment------------------------------
+
+const __dirname1 = path.resolve();
+
+app.get("/", (req, res) => {
+  return res.sendFile(path.resolve(__dirname1, "build", "index.html"))
+});
+
+// --------------------------deployment------------------------------
+
+// Error Handling middlewares
+app.use(notFound);
+app.use(errorHandler);
+
