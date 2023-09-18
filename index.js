@@ -50,7 +50,7 @@ const io = require("socket.io")(server, {
     origin: "*",
     credentials: true,
   },
-});
+})
 
 io.on("connection", (socket) => {
   console.log("Connected to socket.io");
