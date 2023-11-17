@@ -73,7 +73,7 @@ io.on("connection", (socket) => {
 
 const __dirname1 = path.resolve();
 
-app.get("/", (req, res) => {
+app.get("*", (req, res) => {
   return res.sendFile(path.resolve(__dirname1, "build", "index.html"))
 });
 
